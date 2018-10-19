@@ -36,7 +36,6 @@ roledict =  {
   "league": "307872181352792065",
   "nsfw": "307858033525129219"
 }
-# a dictionary where a 'TITLE' is assigned to an Discord role ID
 
 #Role Functions 
 async def role1(message):
@@ -70,7 +69,7 @@ async def role2(message):
             await client.remove_roles(res2.user, discord.utils.get(msg2.server.roles, id=roledict["rainbow"]))
 
 async def role3(message):
-    em3 = discord.Embed(title='Fate Grand Order', description='FGO channel, Yorokobe Shounen', colour=0x0066cc)
+    em3 = discord.Embed(title='Fate Grand Order', description='FGO channel, Yorokobe Shounen and salty gacha pulls ', colour=0x0066cc)
     msg3 = await client.send_message(message.channel, embed=em3)
     await client.add_reaction(msg3, discord.utils.get(client.get_all_emojis(), id=add))
     await client.add_reaction(msg3, discord.utils.get(client.get_all_emojis(), id=remove))
