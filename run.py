@@ -1,4 +1,5 @@
 # Dependencies
+#Import these modules into Python
 import discord
 import asyncio
 import sys
