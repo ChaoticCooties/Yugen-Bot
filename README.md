@@ -13,9 +13,10 @@ cd "the directory where the bot is located"
 python3.5 run.py
 ```
 
-## Usage examples
-
-++
+## Goals - TBD
+* Add config file for easier setup for users
+* Move roles to function folder (OOP)
+* Code optimization
 
 ## Release History
 * 0.0.1
