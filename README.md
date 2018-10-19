@@ -15,7 +15,8 @@ python3.5 run.py
 
 ## Usage examples
 
-//To be added
+### Emotes
+!emo mafiafu
 
 ## Release History
 * 0.0.1
