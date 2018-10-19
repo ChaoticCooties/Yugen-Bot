@@ -36,3 +36,7 @@ Distributed under the GNU Lesser General Public License v3.0 license. See ``LICE
 3. Commit your changes
 4. Push to the branch 
 5. Create a new Pull Request
+
+## Permission to use
+All are permitted to used the code and edit them to suit individual server's needs. However, any possible alterations which will improve 
+code efficiency , readability and reliability will be appreciated.
