@@ -1,7 +1,7 @@
 # Yugen Bot
 > A small Discord bot written in discord.py
 
-Yugen Bot is a Discord bot made exclusively for the Republic Discord Server. (https://short.repsports.org/discord)
+Yugen Bot is a revolutionary Discord bot made exclusively for the Republic Discord Server. (https://short.repsports.org/discord)
 It features autorole based on reactions, as well as a plethora of other minimal features which will be worked on in the future.
 
 ## How to Install
