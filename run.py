@@ -9,7 +9,7 @@ import platform
 import random
 import os
 
-# Here you can modify the bot's prefix and description and wether it sends help in direct messages or not.
+# Here you can modify the bot's prefix and description and whether it sends help in direct messages or not.
 client = Bot(command_prefix="!", description="Bot", pm_help=False)
 
 #BasicBot startup
@@ -127,13 +127,13 @@ async def on_message(message):
         )
     await client.process_commands(message)
 
-#Provides !emo [arg] to post png memes
+#Provides !emo [arg] to post images
 @client.command(pass_context=True)
 async def emo(ctx, arg):
     suffix = "png" ##Not case sensitive
     path = os.path.join("images/" + "{0}" + "." + suffix).format(arg) #Directory images/*.png
     try:
-        await client.send_file(ctx.message.channel, path) # Sends the fukin image
+        await client.send_file(ctx.message.channel, path) # Sends image
     except: 
         await client.say('Image Not Found!')
     return
