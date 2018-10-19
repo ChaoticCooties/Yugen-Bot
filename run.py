@@ -38,7 +38,7 @@ roledict =  {
 
 #Role Functions 
 async def role1(message):
-    em = discord.Embed(title='Granblue Fantasy', description='Granblue Fantasy community of dank memes and Dankchou leeching.', colour=0x33cccc)
+    em = discord.Embed(title='Granblue Fantasy', description='Granblue Fantasy community of dank memes and Dankchou CARRYING.', colour=0x33cccc)
     msg = await client.send_message(message.channel, embed=em)
     await client.add_reaction(msg, discord.utils.get(client.get_all_emojis(), id=add))
     await client.add_reaction(msg, discord.utils.get(client.get_all_emojis(), id=remove))
