@@ -23,7 +23,7 @@ python3.5 run.py
 
 ## Meta
 
-Your Name – [@ChegneJ](https://twitter.com/ChegneJ) – joe@repsports.org
+Chegne Eu Joe – [@ChegneJ](https://twitter.com/ChegneJ) – joe@repsports.org
 
 Distributed under the GNU Lesser General Public License v3.0 license. See ``LICENSE`` for more information.
 
