@@ -36,6 +36,7 @@ roledict =  {
   "league": "307872181352792065",
   "nsfw": "307858033525129219"
 }
+# a dictionary where a 'TITLE' is assigned to an Discord role ID
 
 #Role Functions 
 async def role1(message):
