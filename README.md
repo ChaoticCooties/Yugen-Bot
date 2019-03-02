@@ -1,4 +1,6 @@
-# Yugen Bot
+# Yugen Bot (Deprecated) 
+PLEASE READ: Due to the code spaghetti as well as the future handover of the code to another user (as I might be inactive), I have decided to stop developing the discord bot in Python and will start developing a new bot in JS as the other only competent programmer in my guild is more comfortable in Javascript than Python.
+
 > A small Discord bot written in discord.py
 
 Yugen Bot is a Discord bot made exclusively for the Republic Discord Server. (https://short.repsports.org/discord)
