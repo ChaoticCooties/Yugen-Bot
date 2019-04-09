@@ -1,16 +1,17 @@
-# Yugen Bot (Deprecated) 
-PLEASE READ: Due to the code spaghetti as well as the future handover of the code to another user (as I might be inactive), I have decided to stop developing the discord bot in Python and will start developing a new bot in JS as the other only competent programmer in my guild is more comfortable in Javascript than Python.
+# Yugen Bot 2.0
 
 > A small Discord bot written in discord.py
 
 Yugen Bot is a Discord bot made exclusively for the Republic Discord Server. (https://short.repsports.org/discord)
 It features autorole based on reactions, as well as a plethora of other minimal features which will be worked on in the future.
 
+UPDATE: After a period of inactivity, I've decided to rewrite the bot in python with the new discord.py rewrite API. The 2.0 version will be fully modular and will allow an easier installation for other discord guild owners. 
+
 ## How to Install
 
 There are currently no config files to faciliate easy installations. However, comments in the code should easily provide you with enough knowledge on altering the bot to your server's needs. You may contact me for any questions regarding installations but I will not provide you with step-by-step instructions.
 
-Once you've altered the file successfully, on Linux, type in the terminal:
+Once you've altered the file successfully, on Linux/OSX, type in the terminal:
 ```sh 
 cd "the directory where the bot is located"
 nohup python3.5 run.py
@@ -32,8 +33,10 @@ C:\Python27\python.exe C:\Users\Username\Desktop\my_python_script.py
 * Code optimization
 
 ## Release History
-* 0.0.1
-    * Work in progress
+* 1.0
+  Hard coded auto role system and a bit of other miniscule features 
+ *2.0
+  Modular bot with multiple features (auto role, moderation tools etc.)
 
 ## Meta
 
