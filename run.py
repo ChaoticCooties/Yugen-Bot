@@ -1,15 +1,13 @@
 # Dependencies
-#Import these modules into Python
 import discord
 import asyncio
-import sys
 from discord.ext.commands import Bot
 from discord.ext import commands
 import platform
 import random
 import os
 
-# Here you can modify the bot's prefix and description and whether it sends help in direct messages or not.
+# Here you can modify the bot's prefix and description and wether it sends help in direct messages or not.
 client = Bot(command_prefix="!", description="Bot", pm_help=False)
 
 #BasicBot startup
@@ -34,7 +32,8 @@ roledict =  {
   "rainbow": "453220899089547274",
   "fgo": "383614957369032704",
   "league": "307872181352792065",
-  "nsfw": "307858033525129219"
+  "nsfw": "307858033525129219",
+  "poe": "534622040162959422"
 }
 
 #Role Functions 
@@ -69,7 +68,7 @@ async def role2(message):
             await client.remove_roles(res2.user, discord.utils.get(msg2.server.roles, id=roledict["rainbow"]))
 
 async def role3(message):
-    em3 = discord.Embed(title='Fate Grand Order', description='FGO channel, Yorokobe Shounen and salty gacha pulls ', colour=0x0066cc)
+    em3 = discord.Embed(title='Fate Grand Order', description='FGO channel, Yorokobe Shounen', colour=0x0066cc)
     msg3 = await client.send_message(message.channel, embed=em3)
     await client.add_reaction(msg3, discord.utils.get(client.get_all_emojis(), id=add))
     await client.add_reaction(msg3, discord.utils.get(client.get_all_emojis(), id=remove))
@@ -112,28 +111,34 @@ async def role5(message):
         if res5.reaction.emoji == discord.utils.get(client.get_all_emojis(), id=remove):
             await client.remove_reaction(msg5, discord.utils.get(client.get_all_emojis(), id=remove), res5.user)
             await client.remove_roles(res5.user, discord.utils.get(msg5.server.roles, id=roledict["nsfw"]))
-
+            
 # Reaction auto roles
 @client.event
 async def on_message(message):
-    if message.content.startswith('.autorole1'):
+    if message.content.startswith('.autorole'):
         await client.delete_message(message)
         await asyncio.gather(
         role1(message),
         role2(message),
         role3(message),
         role4(message),
-        role5(message)
+        role5(message),
+        role6(message)
         )
+    elif message.content.startswith('.aprilfools'):
+        for member in message.server.members:
+            if member.nick == "Dankchouv2":
+                await client.change_nickname(member, None)
+    print("Success")
     await client.process_commands(message)
 
-#Provides !emo [arg] to post images
+#Provides !emo [arg] to post png memes
 @client.command(pass_context=True)
 async def emo(ctx, arg):
     suffix = "png" ##Not case sensitive
     path = os.path.join("images/" + "{0}" + "." + suffix).format(arg) #Directory images/*.png
     try:
-        await client.send_file(ctx.message.channel, path) # Sends image
+        await client.send_file(ctx.message.channel, path) # Sends the fukin image
     except: 
         await client.say('Image Not Found!')
     return
@@ -145,4 +150,4 @@ async def choose(*choices : str):
     await client.say(random.choice(choices))
 
 # Bot Token Below	
-client.run(BOT_TOKEN)
+client.run("NDU0MTY1MTk1MTY2NTgwNzQ2.DfptQQ.jIXOKrHKY-m-WAJD0eOCABnL9tU")

@@ -1,0 +1,17 @@
+[{
+    "fgo": {
+        "desc": "fgo lorem ipsum",
+        "id": 500,
+        "color": 500
+    },
+    "r6": { 
+        "desc": "r6 lorem ipsum",
+        "id": 500,
+        "color": "r6color"
+    },
+    "gbf": {
+        "desc": "gbf lorem ipsum",
+        "id": 69,
+        "color": "gbfcolor"
+    }
+}]  
