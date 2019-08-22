@@ -58,5 +58,5 @@ if __name__ == '__main__':
         bot.load_extension(extension)
 
 # Bot Token (DO NOT REVEAL)
-bot.run("NDU0MTY1MTk1MTY2NTgwNzQ2.XVvarw.R0nkOhWwuTZDMoCp0HtlhQqW8Ts",
+bot.run("---",
         reconnect="True")
