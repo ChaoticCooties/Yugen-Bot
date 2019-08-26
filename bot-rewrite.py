@@ -7,10 +7,6 @@ import asyncio
 bot = commands.Bot(command_prefix="!",
                    description="Republic's Custom Bot", pm_help=False)
 
-# Useful variables
-roles = jsonparse.readJSON("data/roles.json")
-roleChannel = bot.get_channel(454239659254480896)
-
 # Startup
 @bot.event
 async def on_ready():
@@ -22,42 +18,47 @@ async def on_ready():
     print('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8'.format(bot.user.id))
     print('Developed by Cooties#2917')
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="cooties.io"))
-    # Purge role channel to setup autorole
+    await main()
+
+
+async def main():
+    # variables
+    roles = jsonparse.readJSON("data/roles.json")
+    roleChannel = bot.get_channel(454239659254480896)
+    role_messages = []
+
+    # cleanup channel
     await roleChannel.purge(limit=10)
 
-    # loop through json and output as embeds
-    for role_id, role_info in roles.items():
-        embed = discord.Embed(
-            title=role_info['game'], color=discord.Color.blurple())
-        embed.description = role_info['desc']
-        avatar = bot.user.avatar_url or bot.user.default_avatar_url
-        embed.set_author(name="Yugen", icon_url=avatar)
-        embed.set_footer(text="github.com/ChaoticCooties")
-        msg = await roleChannel.send("", embed=embed)
-
-        # Set up reactions
-        await msg.add_reaction(bot.get_emoji(454239994219986944))  # Add
-        await msg.add_reaction(bot.get_emoji(454239995969011713))  # Remove
-        await asyncio.sleep(0.1)
-        # Wait for response and react accordingly
-        while True:
-            res, user = await bot.wait_for('reaction_add')
-            role = discord.utils.get(
-                user.guild.roles, id=int(role_info['roleid']))
-            if res.emoji == bot.get_emoji(454239994219986944):
-                await msg.remove_reaction(bot.get_emoji(454239994219986944), user)
-                await user.add_roles(role, reason="Autorole")
-            if res.emoji == bot.get_emoji(454239995969011713):
-                await msg.remove_reaction(bot.get_emoji(454239995969011713), user)
-                await user.remove_roles(role, reason="Autorole")
+    for _, role_info in roles.items():
+        role_messages.append(message_setup(roleChannel, role_info))
+    await asyncio.gather(*role_messages)
 
 
-async def message_setup(role_info):
-    msg = await roleChannel.send("", embed=embed)
+def embed(title, desc, color):
+    color = discord.Color(int(color, 16))
+    embed = discord.Embed(title=title, color=color)
+    embed.description = desc
+    embed.set_footer(text="github.com/ChaoticCooties/Yugen-Bot")
+    return embed
+
+
+async def message_setup(channel, role_info):
+    # setup embed
+    embed_message = embed(role_info['game'], role_info['desc'],
+                          role_info['color'])
+    msg = await channel.send("", embed=embed_message)
+    #  reactions
+    await msg.add_reaction(bot.get_emoji(454239994219986944))  # add emoji
+    await asyncio.sleep(0.1)  # to prevent misfiring bug
+    await msg.add_reaction(bot.get_emoji(454239995969011713))  # remove emoji
     await asyncio.sleep(0.1)
-    # Wait for response and react accordingly
+
+    # listen to reactions and apply roles
     while True:
-        res, user = await bot.wait_for('reaction_add')
+        def check(reaction: discord.Reaction, _) -> bool:
+            return reaction.message.id == msg.id
+        res, user = await bot.wait_for('reaction_add', check=check)
         role = discord.utils.get(
             user.guild.roles, id=int(role_info['roleid']))
         if res.emoji == bot.get_emoji(454239994219986944):
@@ -68,21 +69,6 @@ async def message_setup(role_info):
             await user.remove_roles(role, reason="Autorole")
 
 
-def embed(title, desc, color):
-    embed = discord.Embed(
-        title=title, color=color)
-    embed.description = desc
-    avatar = bot.user.avatar_url or bot.user.default_avatar_url
-    embed.set_author(name="Yugen", icon_url=avatar)
-    embed.set_footer(text="github.com/ChaoticCooties")
-
-
-def embed_reactions(msg, emoji):
-    # Set up reactions
-    await msg.add_reaction(bot.get_emoji(454239994219986944))  # Add
-    await msg.add_reaction(bot.get_emoji(454239995969011713))  # Remove
-
-
 initial_extensions = ['cogs.admin', 'cogs.autorole']
 
 # Here we load our extensions(cogs) listed above in [initial_extensions].
@@ -91,5 +77,5 @@ if __name__ == '__main__':
         bot.load_extension(extension)
 
 # Bot Token (DO NOT REVEAL)
-bot.run("NDU0MTY1MTk1MTY2NTgwNzQ2.XWFESw.43oz8QwWKR-GjuL8qT2CukjJ8RU",
+bot.run("---",
         reconnect="True")

@@ -1,14 +1,20 @@
 {
     "1": {
-        "game": "Granblue",
+        "game": "Granblue Fantasy",
         "desc": "Danchou is slacking",
-        "color": "red",
+        "color": "19FC01",
         "roleid": "307856397515882500"
     },
     "2": {
         "game": "Fate Grand Order",
         "desc": "Yorokobe Shounen",
-        "color": "orange",
-        "roleid": "383614957369032704"
+        "color": "16FFE0",
+        "roleid": "588616408645238785"
+    },
+    "3": {
+        "game": "Not Safe For Work",
+        "desc": "Good(Bad) stuff and good food",
+        "color": "333F3F",
+        "roleid": "307858033525129219"
     }
 }

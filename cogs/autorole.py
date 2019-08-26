@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 import data.jsonparse as jsonparse
+import re
 
 
 class autoRoleCog(commands.Cog):
@@ -40,9 +41,14 @@ class autoRoleCog(commands.Cog):
                                                        description="What color should the embed message be?"))
                 try:
                     roleColor = await self.bot.wait_for('message', check=check, timeout=30)
+                    if not re.search(r'^(?:[0-9a-fA-F]{3}){1,2}$', roleColor.content):
+                        raise ValueError(
+                            'Invalid color, use hexadecimal values!')
                 except asyncio.TimeoutError:
                     await ctx.send("", embed=discord.Embed(title="Command Timeout"))
                     return
+                except ValueError as err:
+                    await ctx.send(err)
                 else:
                     await ctx.send("", embed=discord.Embed(title=roleTitle.content,
                                                            description="What is the role id?"))
@@ -67,16 +73,3 @@ class autoRoleCog(commands.Cog):
 
 def setup(bot):
     bot.add_cog(autoRoleCog(bot))
-
-
-""" # test command
-    @commands.command(name='test1')
-    async def test(self, ctx):
-        embed = discord.Embed(title="Test Nibba",
-                              description="test", color=0x008CFF)
-        # embed.description = "Test"
-        # avatar = self.bot.user.avatar_url or self.bot.user.default_avatar_url
-        # embed.set_author(name="Yugen Bot", icon_url=avatar)
-        embed.set_footer(
-            text="cooties.io")
-        await ctx.send("", embed=embed) """
