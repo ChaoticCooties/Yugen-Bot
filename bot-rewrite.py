@@ -3,9 +3,13 @@ import discord
 from discord.ext import commands
 import data.jsonparse as jsonparse
 import asyncio
+import configparser
 
 bot = commands.Bot(command_prefix="!",
                    description="Republic's Custom Bot", pm_help=False)
+
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 # Startup
 @bot.event
@@ -23,8 +27,9 @@ async def on_ready():
 
 async def main():
     # variables
-    roles = jsonparse.readJSON("data/roles.json")
-    roleChannel = bot.get_channel(454239659254480896)
+    roles = jsonparse.readJSON(config['config']['role_json'])
+    roleChannel = bot.get_channel(
+        config['config'].getint('role_channel_id'))
     role_messages = []
 
     # cleanup channel
@@ -49,9 +54,9 @@ async def message_setup(channel, role_info):
                           role_info['color'])
     msg = await channel.send("", embed=embed_message)
     #  reactions
-    await msg.add_reaction(bot.get_emoji(454239994219986944))  # add emoji
+    await msg.add_reaction(bot.get_emoji(config['emoji'].getint('add')))
     await asyncio.sleep(0.1)  # to prevent misfiring bug
-    await msg.add_reaction(bot.get_emoji(454239995969011713))  # remove emoji
+    await msg.add_reaction(bot.get_emoji(config['emoji'].getint('remove')))
     await asyncio.sleep(0.1)
 
     # listen to reactions and apply roles
@@ -61,11 +66,11 @@ async def message_setup(channel, role_info):
         res, user = await bot.wait_for('reaction_add', check=check)
         role = discord.utils.get(
             user.guild.roles, id=int(role_info['roleid']))
-        if res.emoji == bot.get_emoji(454239994219986944):
-            await msg.remove_reaction(bot.get_emoji(454239994219986944), user)
+        if res.emoji == bot.get_emoji(config['emoji'].getint('add')):
+            await msg.remove_reaction(bot.get_emoji(config['emoji'].getint('add')), user)
             await user.add_roles(role, reason="Autorole")
-        if res.emoji == bot.get_emoji(454239995969011713):
-            await msg.remove_reaction(bot.get_emoji(454239995969011713), user)
+        if res.emoji == bot.get_emoji(config['emoji'].getint('remove')):
+            await msg.remove_reaction(bot.get_emoji(config['emoji'].getint('remove')), user)
             await user.remove_roles(role, reason="Autorole")
 
 
@@ -77,5 +82,5 @@ if __name__ == '__main__':
         bot.load_extension(extension)
 
 # Bot Token (DO NOT REVEAL)
-bot.run("---",
+bot.run(config['config']['bot_token'],
         reconnect="True")
