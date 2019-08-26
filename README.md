@@ -2,17 +2,17 @@
  A discord.py-rewrite bot previously exclusive to the [Republic](http://short.repsports.org/discord) Server 
 
 # Installation Guide
-##Installing Dependencies
+**Installing Dependencies
 Packages stated in requirements.txt are to be installed prior to running Yugen.
 
 ```
 python -m pip install -r requirements.txt
 ```
 
-##Config
+**Config
 WIP
 
-##Running the Bot
+**Running the Bot
 WIP
 
 # Release History
