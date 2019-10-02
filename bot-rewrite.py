@@ -74,6 +74,11 @@ async def message_setup(channel, role_info):
             await user.remove_roles(role, reason="Autorole")
 
 
+@commands.command(name='restart')
+@commands.has_any_role("admin", "moderator")
+async def restart(self, ctx):
+    await main()
+
 initial_extensions = ['cogs.admin', 'cogs.autorole']
 
 # Here we load our extensions(cogs) listed above in [initial_extensions].
