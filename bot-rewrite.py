@@ -25,19 +25,11 @@ async def on_ready():
     await main()
 
 
-async def main():
-    # variables
-    roles = jsonparse.readJSON(config['config']['role_json'])
-    roleChannel = bot.get_channel(
-        config['config'].getint('role_channel_id'))
-    role_messages = []
-
-    # cleanup channel
-    await roleChannel.purge(limit=10)
-
-    for _, role_info in roles.items():
-        role_messages.append(message_setup(roleChannel, role_info))
-    await asyncio.gather(*role_messages)
+@bot.event
+async def on_message(message):
+    if message.content.startswith('!restart'):
+        await main()
+    await bot.process_commands(message)
 
 
 def embed(title, desc, color):
@@ -74,10 +66,20 @@ async def message_setup(channel, role_info):
             await user.remove_roles(role, reason="Autorole")
 
 
-@commands.command(name='restart')
-@commands.has_any_role("admin", "moderator")
-async def restart(self, ctx):
-    await main()
+async def main():
+    # variables
+    roles = jsonparse.readJSON(config['config']['role_json'])
+    roleChannel = bot.get_channel(
+        config['config'].getint('role_channel_id'))
+    role_messages = []
+
+    # cleanup channel
+    await roleChannel.purge(limit=10)
+
+    for _, role_info in roles.items():
+        role_messages.append(message_setup(roleChannel, role_info))
+    await asyncio.gather(*role_messages)
+
 
 initial_extensions = ['cogs.admin', 'cogs.autorole']
 
