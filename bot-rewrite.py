@@ -24,7 +24,7 @@ async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="cooties.io"))
     await main()
 
-
+# Manual autorole restart
 @bot.event
 async def on_message(message):
     if message.content.startswith('!restart'):
@@ -81,7 +81,7 @@ async def main():
     await asyncio.gather(*role_messages)
 
 
-initial_extensions = ['cogs.admin', 'cogs.autorole']
+initial_extensions = ['cogs.admin', 'cogs.autorole', 'cogs.chat']
 
 # Here we load our extensions(cogs) listed above in [initial_extensions].
 if __name__ == '__main__':
