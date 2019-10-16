@@ -4,6 +4,8 @@ from discord.ext import commands
 import data.jsonparse as jsonparse
 import asyncio
 import configparser
+import emoji
+import re
 
 bot = commands.Bot(command_prefix="!",
                    description="Republic's Custom Bot", pm_help=False)
@@ -29,6 +31,12 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('!restart'):
         await main()
+    elif message.channel.id == config['config'].getint('emoji_channel_blacklist'):
+        # <emoji: 12938712> r'<:\w*:\d*>'
+        msg = emoji.demojize(message.content)
+        if re.search(r':\w*:\d*', msg):
+            await message.channel.purge(limit=1)
+
     await bot.process_commands(message)
 
 
