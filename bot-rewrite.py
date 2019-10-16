@@ -4,6 +4,8 @@ from discord.ext import commands
 import data.jsonparse as jsonparse
 import asyncio
 import configparser
+import emoji
+import re
 
 bot = commands.Bot(command_prefix="!",
                    description="Republic's Custom Bot", pm_help=False)
@@ -24,11 +26,17 @@ async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="cooties.io"))
     await main()
 
-
+# Manual autorole restart
 @bot.event
 async def on_message(message):
     if message.content.startswith('!restart'):
         await main()
+    elif message.channel.id == config['config'].getint('emoji_channel_blacklist'):
+        # <emoji: 12938712> r'<:\w*:\d*>'
+        msg = emoji.demojize(message.content)
+        if re.search(r':\w*:\d*', msg):
+            await message.channel.purge(limit=1)
+
     await bot.process_commands(message)
 
 
@@ -81,7 +89,7 @@ async def main():
     await asyncio.gather(*role_messages)
 
 
-initial_extensions = ['cogs.admin', 'cogs.autorole']
+initial_extensions = ['cogs.admin', 'cogs.autorole', 'cogs.chat']
 
 # Here we load our extensions(cogs) listed above in [initial_extensions].
 if __name__ == '__main__':
