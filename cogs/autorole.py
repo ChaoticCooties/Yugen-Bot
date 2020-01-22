@@ -5,19 +5,27 @@ import data.jsonparse as jsonparse
 import re
 
 
-class autoRoleCog(commands.Cog):
+class AutoRole(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
 
-    # add a role into json list
+    # Autorole Startup
+    def embed(self, title, desc, color):
+        color = discord.Color(int(color, 16))
+        embed = discord.Embed(title=title, color=color)
+        embed.description = desc
+        embed.set_footer(text="github.com/ChaoticCooties/Yugen-Bot")
+        return embed
+
+    # Add role to JSON store
     @commands.command(name='addrole')
     @commands.has_any_role("admin", "moderator")
     async def addrole(self, ctx):
         await ctx.send("", embed=discord.Embed(title="Role Title",
                                                description="What should the role be called?"))
-        # To make sure the one entering the variables are the same person
 
+        # To Ensure It's The Same User Who Evoked The Command
         def check(message):
             return message.author == ctx.author
 
@@ -67,9 +75,9 @@ class autoRoleCog(commands.Cog):
     async def delrole(self, ctx):
         print(ctx.content)
 
-        # The setup fucntion below is neccesarry. Remember we give bot.add_cog() the name of the class in this case SimpleCog.
+        # The setup fucntion below is necessary. Remember we give bot.add_cog() the name of the class in this case SimpleCog.
         # When we load the cog, we use the name of the file.
 
 
 def setup(bot):
-    bot.add_cog(autoRoleCog(bot))
+    bot.add_cog(AutoRole(bot))
