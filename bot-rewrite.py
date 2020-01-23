@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix="!",
                    description="Republic's Custom Bot", pm_help=False)
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('testconfig.ini')
 
 # Startup
 @bot.event
@@ -35,12 +35,14 @@ async def gw_alert():
     crew_channel = bot.get_channel(
         config['config'].getint('crew_channel_id'))
     activated = config['DEFAULT'].getboolean('gwtoggle')
-    # 24 hours format
+    # 24 hours format 19:00
     current_time = datetime.strftime(datetime.now(), '%H:%M')
     if activated:
         if current_time == '19:00':
             await crew_channel.send("@everyone TIME TO BUFF UP FO/ATK/DEF AND RUSH DANCHOU'S ASS")
             await asyncio.sleep(70)
+        else:
+            await asyncio.sleep(1)
 
 
 @gw_alert.before_loop
