@@ -39,7 +39,7 @@ async def gw_alert():
     current_time = datetime.strftime(datetime.now(), '%H:%M')
     if activated:
         if current_time == '19:00':
-            await crew_channel.send("@everyone TIME TO BUFF UP FO/ATK/DEF AND RUSH DANCHOU'S ASS")
+            await crew_channel.send("21:31")
             await asyncio.sleep(70)
         else:
             await asyncio.sleep(1)
