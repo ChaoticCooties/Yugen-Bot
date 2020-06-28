@@ -1,8 +1,6 @@
 import discord
 from discord.ext import commands
-import re
 import configparser
-import schedule
 
 config = configparser.ConfigParser()
 config.read('config.ini')
