@@ -1,0 +1,130 @@
+
+
+Logged in as: Yugen - 454165195166580746
+Version: 1.3.3
+
+Successfully logged in and booted...!
+Use this link to invite Yugen:
+https://discordapp.com/oauth2/authorize?client_id=454165195166580746&scope=bot&permissions=8
+Developed by Cooties#1101
+Ignoring exception in command None:
+discord.ext.commands.errors.CommandNotFound: Command "!!!!!!!!!!!!!!!!!" is not found
+
+
+Logged in as: Yugen - 454165195166580746
+Version: 1.3.3
+
+Successfully logged in and booted...!
+Use this link to invite Yugen:
+https://discordapp.com/oauth2/authorize?client_id=454165195166580746&scope=bot&permissions=8
+Developed by Cooties#1101
+Ignoring exception in on_raw_reaction_add
+Traceback (most recent call last):
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 312, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/cooties/Yugen-Bot/cogs/roles.py", line 34, in on_raw_reaction_add
+    await user.add_roles(role, reason="Reaction roles")
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/member.py", line 641, in add_roles
+    await req(guild_id, user_id, role.id, reason=reason)
+AttributeError: 'NoneType' object has no attribute 'id'
+
+
+Logged in as: Yugen - 454165195166580746
+Version: 1.3.3
+
+Successfully logged in and booted...!
+Use this link to invite Yugen:
+https://discordapp.com/oauth2/authorize?client_id=454165195166580746&scope=bot&permissions=8
+Developed by Cooties#1101
+Traceback (most recent call last):
+  File "bot.py", line 49, in <module>
+    bot.run(config['config']['bot_token'], reconnect="True")
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 640, in run
+    return future.result()
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 621, in runner
+    await self.start(*args, **kwargs)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 585, in start
+    await self.connect(reconnect=reconnect)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 499, in connect
+    await self._connect()
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 463, in _connect
+    await self.ws.poll_event()
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/gateway.py", line 471, in poll_event
+    await self.received_message(msg)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/gateway.py", line 425, in received_message
+    func(data)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/state.py", line 750, in parse_guild_create
+    guild = self._get_create_guild(data)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/state.py", line 725, in _get_create_guild
+    guild._from_data(data)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/guild.py", line 297, in _from_data
+    self._sync(guild)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/guild.py", line 324, in _sync
+    self._add_channel(TextChannel(guild=self, data=c, state=self._state))
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/channel.py", line 107, in __init__
+    self._update(guild, data)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/channel.py", line 131, in _update
+    self._fill_overwrites(data)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/abc.py", line 294, in _fill_overwrites
+    self._overwrites.append(_Overwrites(id=overridden_id, **overridden))
+TypeError: __new__() got an unexpected keyword argument 'deny_new'
+
+
+Logged in as: Yugen - 454165195166580746
+Version: 1.3.4
+
+Successfully logged in and booted...!
+Use this link to invite Yugen:
+https://discordapp.com/oauth2/authorize?client_id=454165195166580746&scope=bot&permissions=8
+Developed by Cooties#1101
+Ignoring exception in command None:
+discord.ext.commands.errors.CommandNotFound: Command "ping" is not found
+
+
+Logged in as: Yugen - 454165195166580746
+Version: 1.3.4
+
+Successfully logged in and booted...!
+Use this link to invite Yugen:
+https://discordapp.com/oauth2/authorize?client_id=454165195166580746&scope=bot&permissions=8
+Developed by Cooties#1101
+Traceback (most recent call last):
+  File "bot.py", line 50, in <module>
+    bot.run(config['config']['bot_token'], reconnect="True")
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 637, in run
+    _cleanup_loop(loop)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 92, in _cleanup_loop
+    _cancel_tasks(loop)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 77, in _cancel_tasks
+    loop.run_until_complete(asyncio.gather(*tasks, return_exceptions=True))
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 614, in run_until_complete
+    raise RuntimeError('Event loop stopped before Future completed.')
+RuntimeError: Event loop stopped before Future completed.
+Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 312, in _run_event
+    await coro(*args, **kwargs)
+  File "bot.py", line 30, in on_message
+    await ban(139765696736264194)
+NameError: name 'ban' is not defined
+
+
+Logged in as: Yugen - 454165195166580746
+Version: 1.3.4
+
+Successfully logged in and booted...!
+Use this link to invite Yugen:
+https://discordapp.com/oauth2/authorize?client_id=454165195166580746&scope=bot&permissions=8
+Developed by Cooties#1101
+Traceback (most recent call last):
+  File "bot.py", line 51, in <module>
+    bot.run(config['config']['bot_token'], reconnect="True")
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 637, in run
+    _cleanup_loop(loop)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 92, in _cleanup_loop
+    _cancel_tasks(loop)
+  File "/home/cooties/.local/lib/python3.8/site-packages/discord/client.py", line 77, in _cancel_tasks
+    loop.run_until_complete(asyncio.gather(*tasks, return_exceptions=True))
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 614, in run_until_complete
+    raise RuntimeError('Event loop stopped before Future completed.')
+RuntimeError: Event loop stopped before Future completed.

